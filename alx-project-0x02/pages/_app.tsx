@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="description" content="This is my application built with Next.js" />
         <meta name="keywords" content="Next.js, React, Application" />
       </Head>
-      <Header />
+
       <div className="container px-6 width-full mx-auto">
         <Component {...pageProps} />
       </div>
