@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Header: React.FC = () => {
 	return (
-		<header className="flex justify-between py-4 bg-blue-600 text-white shadow-md px-6">
+		<header className="flex sticky justify-between py-4 bg-blue-600 text-white shadow-md px-6">
 			<h1><Link href="/">My Application</Link></h1>
 			<nav>
 				<ul className="flex gap-4">

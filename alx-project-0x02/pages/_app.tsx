@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="keywords" content="Next.js, React, Application" />
       </Head>
       <Header />
-      <div className="container px-6">
+      <div className="container px-6 width-full mx-auto">
         <Component {...pageProps} />
       </div>
     </>
