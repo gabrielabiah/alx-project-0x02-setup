@@ -22,3 +22,7 @@ export interface PostProps {
   body: string;
   userId: string;
 }
+
+export interface PostsPageProps {
+  posts: PostProps[];
+}
