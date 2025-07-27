@@ -1,7 +1,8 @@
+// pages/users.tsx
 import { GetStaticProps } from "next";
-import UserCard from "@/components/common/UserCard";
 import { UserProps } from "@/interfaces";
 import Header from "@/components/layout/Header";
+import UserCard from "@/components/common/UserCard";
 
 interface UsersPageProps {
 	users: UserProps[];
@@ -35,7 +36,6 @@ export const getStaticProps: GetStaticProps = async () => {
 		props: {
 			users,
 		},
-		revalidate: 3600, // Rebuild the static page every 1 hour (optional)
 	};
 };
 
