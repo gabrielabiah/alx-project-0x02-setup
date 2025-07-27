@@ -1,15 +1,45 @@
+// pages/home.tsx
+import { useState } from "react";
+import Header from "@/components/layout/Header";
 import Card from "@/components/common/Card";
+import PostModal from "@/components/common/PostModal";
 
-const Home: React.FC = () => {
+interface Post {
+	title: string;
+	content: string;
+}
+
+export default function HomePage() {
+	const [modalOpen, setModalOpen] = useState(false);
+	const [posts, setPosts] = useState<Post[]>([]);
+
+	const handleAddPost = (title: string, content: string) => {
+		setPosts([{ title, content }, ...posts]);
+		setModalOpen(false);
+	};
+
 	return (
-		<div className="flex flex-col items-center justify-center min-h-screen">
-			<h1>Welcome to the Home Page</h1>
-			<p>This is the main entry point of our application.</p>
-			<Card title="My first card" content="This is the content of my first card." />
-			<Card title="My second card" content="This is the content of my second card." />
-			<Card title="My third card" content="This is the content of my third card." />
+		<div className="p-4">
+			<h1 className="text-2xl font-bold mb-4">Home Page</h1>
+
+			<button
+				className="mb-4 px-4 py-2 bg-green-600 text-white rounded"
+				onClick={() => setModalOpen(true)}
+			>
+				Add Post
+			</button>
+
+			<PostModal
+				isOpen={modalOpen}
+				onClose={() => setModalOpen(false)}
+				onSubmit={handleAddPost}
+			/>
+
+			<div className="grid gap-4">
+				{posts.map((post, index) => (
+					<Card key={index} title={post.title} content={post.content} />
+				))}
+			</div>
 		</div>
 	);
 }
-
-export default Home;
