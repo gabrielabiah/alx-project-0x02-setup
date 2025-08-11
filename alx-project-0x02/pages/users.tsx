@@ -28,15 +28,28 @@ const UsersPage = ({ users }: UsersPageProps) => {
 	);
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export async function getStaticProps() {
 	const res = await fetch("https://jsonplaceholder.typicode.com/users");
-	const users: UserProps[] = await res.json();
+	const data = await res.json();
+
+	const users: UserProps[] = data.map((user: UserProps) => ({
+		id: user.id.toString(),
+		name: user.name,
+		email: user.email,
+		address: {
+			street: user.address.street,
+			suite: user.address.suite,
+			city: user.address.city,
+			zipcode: user.address.zipcode,
+		},
+	}));
 
 	return {
 		props: {
 			users,
 		},
 	};
-};
+}
+
 
 export default UsersPage;
